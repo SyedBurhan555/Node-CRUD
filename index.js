@@ -1,17 +1,16 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const PORT =  8000;
+const PORT = 8000;
 const dotenv = require("dotenv");
-const productRoutes = require('./routes/product');
+const productRoutes = require("./routes/product");
 
-dotenv.config({path:'./config.env'});
-require('./db/conn')
+dotenv.config({ path: "./config.env" });
+require("./db/conn");
 
-app.use('/api/product',productRoutes)
+app.use(express.json());
 
-app.listen(PORT,()=>{
-    console.log(`Server is running at PORT ${PORT}`)
-})
+app.use("/api/product", productRoutes);
 
-
-
+app.listen(PORT, () => {
+  console.log(`Server is running at PORT ${PORT}`);
+});
